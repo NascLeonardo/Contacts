@@ -8,12 +8,7 @@ use Illuminate\Support\Facades\Validator;
 class ContactController extends Controller
 {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function index()
     {
         $contacts = Contact::all();
         foreach($contacts as $contact){
@@ -22,7 +17,17 @@ class ContactController extends Controller
                 $contact->birthday = date('d/m/Y', strtotime($contact->birthday));
             }
         }
-        return view('contacts.create',['contacts'=>$contacts]);
+        return view('contacts.index',['contacts'=>$contacts]);
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+
+        return view('contacts.create');
     }
 
     /**
@@ -58,8 +63,6 @@ class ContactController extends Controller
             ]);
         }
 
-
-
         return redirect()->action([ContactController::class, 'create']);
     }
 
@@ -80,7 +83,7 @@ class ContactController extends Controller
             'isFavorite' => !$contact->isFavorite,
         ]);
 
-        return redirect()->action([ContactController::class, 'create']);
+        return redirect()->action([ContactController::class, 'index']);
     }
 
     /**
@@ -93,6 +96,6 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $contact->delete();
-        return redirect()->action([ContactController::class, 'create']);
+        return redirect()->action([ContactController::class, 'index']);
     }
 }
