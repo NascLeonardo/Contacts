@@ -15,49 +15,49 @@
     <title>Contacts</title>
 </head>
 
-<body class="container bg-black text-white">
+<body class="container bg-secondary vh-100">
 
-    <h1 class="text-white">Contacts</h1>
+    <h1 class="mt-3">Contacts</h1>
     <p>Create a new contact</p>
     <div class="row">
 
-        <form action="/" method="post" class="row col-12 col-md-6 mx-auto">
+        <form action="/" method="post" class=" row col-12 col-md-6 mx-auto">
             @csrf
-            <div class="form-group col-12 col-md-6">
+            <div class="form-group input-group-sm col-12 col-md-6">
                 <label for="inputFirstname">Firstname:</label>
                 <input type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" id="inputFirstname"
                     aria-describedby="helpFirstname" placeholder="Ex: Jon" value="{{ old('firstname') }}">
                 <small id="helpFirstname" class="form-text text-muted">Contact's firstname</small>
             </div>
-            <div class="form-group col-12 col-md-6">
+            <div class="form-group input-group-sm col-12 col-md-6">
                 <label for="inputSurname">Surname:</label>
                 <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" id="inputSurname" aria-describedby="helpSurname"
                     placeholder="Ex: Doe" value="{{ old('surname') }}">
                 <small id="helpSurname" class="form-text text-muted">Contact's surname</small>
             </div>
 
-            <div class="form-group col-12">
+            <div class="form-group input-group-sm col-12">
                 <label for="inputNickname">Nickname:</label>
                 <input type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname"
                     id="inputNickname" aria-describedby="helpNickname" placeholder="Ex: JonD" value="{{ old('nickname') }}" onkeyup="nospaces(this)">
                 <small id="helpNickname" class="form-text text-muted">Contact's nickname. @error('nickname')Nickname already in use, choose another! @enderror</small>
             </div>
 
-            <div class="form-group col-12">
+            <div class="form-group input-group-sm col-12">
                 <label for="inputEmail">Email:</label>
                 <input type="email" class="form-control" name="email"
                     id="inputEmail" aria-describedby="helpEmail" placeholder="Ex: email@email.com" value="{{ old('email') }}">
                 <small id="helpEmail" class="form-text text-muted">Contact's email.</small>
             </div>
 
-            <div class="form-group col-12">
+            <div class="form-group input-group-sm col-12">
                 <label for="inputPhone">Phone:</label>
                 <input type="tel" class="form-control" name="phone" id="inputPhone"
                     aria-describedby="helpPhone" placeholder="Ex: (00) 01234-5678" value="{{ old('phone') }}">
                 <small id="helpPhone" class="form-text text-muted">Contact's phone</small>
             </div>
 
-            <div class="form-group col-12">
+            <div class="form-group input-group-sm col-12">
                 <label for="inputBirthday">Birthday:</label>
                 <input type="date" class="form-control" name="birthday" id="inputBirthday"
                     aria-describedby="helpBirthday" value="{{ old('birthday') }}">
@@ -74,7 +74,7 @@
             @isset($contacts)
                 @foreach ($contacts as $contact)
                 <div class="card mb-3">
-                    <div class="card-body bg-black boder-white text-white">
+                    <div class="card-body boder-dark">
                         <div class="row">
                             <h4 class="col-6 card-title">{{ $contact->firstname}} {{ $contact->surname}}</h4>
                             <h4 class="col-6 text-success text-end">{{$contact->isFavorite ? "Favorite " : null}}</h4>
