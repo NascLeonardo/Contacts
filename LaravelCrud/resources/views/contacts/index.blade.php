@@ -43,7 +43,8 @@
         </div>
     </nav>
 
-
+    <div class="p-1 h-100">
+      
     <h1 class="mt-3">Contacts</h1>
     <p>List of contact</p>
     <div class="row">
@@ -67,15 +68,19 @@
                             @isset($contact->birthday)
                                 <p class="card-text my-0">Birthday: {{ $contact->birthday }}</p>
                             @endisset
-                            <a href="/contacts/delete/{{ $contact->id }}" class="card-link text-danger">Delete</a>
-                            <a href="/contacts/favorite/{{ $contact->id }}"
+                            <a href="/Contacts/Delete/{{ $contact->id }}" class="card-link text-danger">Delete</a>
+                            <a href="/Contacts/Favorite/{{ $contact->id }}"
                                 class="card-link text-warning">{{ $contact->isFavorite ? 'Remove of Favorites' : 'Set as Favorite' }}</a>
+                              
+                              <a href="/Contacts/Edit/{{ $contact->id }}"
+                                class="card-link text-warning">Edit</a>
                         </div>
                     </div>
                 @endforeach
             @endisset
 
         </main>
+    </div>
     </div>
 
 

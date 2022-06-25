@@ -44,49 +44,51 @@
     <div class="p-1 h-100">
 
         <h1 class="mt-3">Contacts</h1>
-        <p>Create a new contact</p>
+        <p>Edit contact</p>
         <div class="row">
 
-            <form action="/Contacts/Store" method="post" class=" row col-12 col-md-6 mx-auto mx-md-0">
+            <form action="/Contacts/update" method="post" class=" row col-12 col-md-6 mx-auto mx-md-0">
             @csrf
+            <input type="text"  class="d-none"id="inputId"
+                value="{{ $contact->id}}">
             <div class="form-group input-group-sm col-12 col-md-6">
                 <label for="inputFirstname">Firstname:</label>
                 <input type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" id="inputFirstname"
-                aria-describedby="helpFirstname" placeholder="Ex: Jon" value="{{ old('firstname') }}">
+                aria-describedby="helpFirstname" placeholder="Ex: Jon" value="{{ $contact->firstname }}">
                 <small id="helpFirstname" class="form-text text-muted">Contact's firstname</small>
             </div>
             <div class="form-group input-group-sm col-12 col-md-6">
                 <label for="inputSurname">Surname:</label>
                 <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" id="inputSurname" aria-describedby="helpSurname"
-                    placeholder="Ex: Doe" value="{{ old('surname') }}">
+                    placeholder="Ex: Doe" value="{{ $contact->surname }}">
                 <small id="helpSurname" class="form-text text-muted">Contact's surname</small>
             </div>
 
             <div class="form-group input-group-sm col-12">
                 <label for="inputNickname">Nickname:</label>
                 <input type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname"
-                    id="inputNickname" aria-describedby="helpNickname" placeholder="Ex: JonD" value="{{ old('nickname') }}" onkeyup="nospaces(this)">
+                    id="inputNickname" aria-describedby="helpNickname" placeholder="Ex: JonD" value="{{$contact->nickname}}" onkeyup="nospaces(this)">
                 <small id="helpNickname" class="form-text text-muted">Contact's nickname. @error('nickname')Nickname already in use, choose another! @enderror</small>
             </div>
 
             <div class="form-group input-group-sm col-12">
                 <label for="inputEmail">Email:</label>
                 <input type="email" class="form-control" name="email"
-                id="inputEmail" aria-describedby="helpEmail" placeholder="Ex: email@email.com" value="{{ old('email') }}">
+                id="inputEmail" aria-describedby="helpEmail" placeholder="Ex: email@email.com" value="{{ $contact->email }}">
                 <small id="helpEmail" class="form-text text-muted">Contact's email.</small>
             </div>
 
             <div class="form-group input-group-sm col-12">
                 <label for="inputPhone">Phone:</label>
                 <input type="tel" class="form-control" name="phone" id="inputPhone"
-                aria-describedby="helpPhone" placeholder="Ex: (00) 01234-5678" value="{{ old('phone') }}">
+                aria-describedby="helpPhone" placeholder="Ex: (00) 01234-5678" value="{{ $contact->phone }}">
                 <small id="helpPhone" class="form-text text-muted">Contact's phone</small>
             </div>
 
             <div class="form-group input-group-sm col-12">
                 <label for="inputBirthday">Birthday:</label>
                 <input type="date" class="form-control" name="birthday" id="inputBirthday"
-                aria-describedby="helpBirthday" value="{{ old('birthday') }}">
+                aria-describedby="helpBirthday" value="{{$contact->birthday }}">
                 <small id="helpBirthday" class="form-text text-muted">Contact's birthday</small>
             </div>
 

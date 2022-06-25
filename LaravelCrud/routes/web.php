@@ -17,6 +17,8 @@ use App\Http\Controllers\ContactController;
 Route::get('/Contacts/Create', [ContactController::class, 'create']);
 Route::get('/Contacts', [ContactController::class, 'index']);
 
-Route::post('/', [ContactController::class, 'store']);
-Route::get('/contacts/favorite/{id}', [ContactController::class, 'favorite']);
-Route::get('/contacts/delete/{id}', [ContactController::class, 'destroy']);
+Route::post('/Contacts/Store', [ContactController::class, 'store']);
+Route::get('/Contacts/Favorite/{id}', [ContactController::class, 'favorite']);
+Route::get('/Contacts/Edit/{id}', [ContactController::class, 'edit']);
+Route::post('/Contacts/update/', [ContactController::class, 'update']);
+Route::get('/Contacts/Delete/{id}', [ContactController::class, 'destroy']);

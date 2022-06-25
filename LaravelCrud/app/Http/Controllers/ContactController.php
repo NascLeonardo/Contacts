@@ -26,8 +26,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-
-        return view('contacts.create');
+       return view('contacts.create');
     }
 
     /**
@@ -49,7 +48,7 @@ class ContactController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/')
+            return redirect()->action([ContactController::class, 'create'])
                         ->withErrors($validator)
                         ->withInput();
         }else{
@@ -84,6 +83,19 @@ class ContactController extends Controller
         ]);
 
         return redirect()->action([ContactController::class, 'index']);
+    }
+    
+    public function edit(Request $request, int $id)
+    {
+        $contact = Contact::findOrFail($id);
+
+        
+        if($contact->birthday != null){
+
+                $contact->birthday = date('d/m/Y', strtotime($contact->birthday));
+            }
+        
+        return view('contacts.edit',['contact'=>$contact]);
     }
 
     /**
