@@ -15,7 +15,7 @@
   <title>Contacts</title>
 </head>
 
-<body class="container-fluid bg-secondary vh-100 h-100 p-0">
+<body class="container-fluid bg-secondary vh-100 p-0 clearfix">
 
   <nav class="navbar navbar-sm navbar-expand-sm navbar-dark bg-primary p-1">
     <div class="container-fluid">
@@ -41,7 +41,7 @@
       </div>
     </div>
   </nav>
-  <div class="p-1 h-100">
+  <div class="mx-3">
 
     <h1 class="mt-3">Contacts</h1>
     <p>

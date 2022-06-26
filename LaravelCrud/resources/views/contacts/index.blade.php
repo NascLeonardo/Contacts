@@ -15,7 +15,7 @@
   <title>Contacts</title>
 </head>
 
-<body class="container-fluid bg-secondary vh-100 p-0">
+<body class="container-fluid bg-secondary vh-100 clearfix p-0">
 
 
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary p-1">
@@ -36,22 +36,24 @@
           <li class="nav-item">
             <a class="nav-link" href="/Contacts/Create">Create</a>
           </li>
-
+        
+          
         </ul>
 
       </div>
     </div>
   </nav>
 
-  <div class="p-1 h-100">
+  <div class="mx-3">
 
     <h1 class="mt-3">Contacts</h1>
+    
     <p>
       List of contact
     </p>
     <div class="row">
 
-      <main class="col-12 mt-3 ">
+      <main class="row g-1 mx-auto col-12 mt-3 ">
         @isset($contacts)
         @foreach ($contacts as $contact)
         <div class="card col-12 col-md-4 mb-3">

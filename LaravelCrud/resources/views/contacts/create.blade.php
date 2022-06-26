@@ -15,7 +15,7 @@
   <title>Contacts</title>
 </head>
 
-<body class="container-fluid bg-secondary vh-100 h-100 p-0">
+<body class="container-fluid bg-secondary vh-100 clearfix p-0">
 
   <nav class="navbar navbar-sm navbar-expand-sm navbar-dark bg-primary p-1">
     <div class="container-fluid">
@@ -41,7 +41,7 @@
       </div>
     </div>
   </nav>
-  <div class="p-1 h-100">
+  <div class="mx-3">
 
     <h1 class="mt-3">Contacts</h1>
     <p>
@@ -49,7 +49,7 @@
     </p>
     <div class="row">
 
-      <form action="/Contacts/Store" method="post" class=" row col-12 col-md-6 mx-auto mx-md-0">
+      <form action="/Contacts/Store" method="post" class="h-75 row col-12 col-md-6 mx-auto mx-md-0">
         @csrf
         <div class="form-group input-group-sm col-12 col-md-6">
           <label for="inputFirstname">Firstname:</label>
