@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Collection;
 class ContactController extends Controller
 {
 
@@ -16,7 +17,10 @@ class ContactController extends Controller
         $contact->birthday = date('d/m/Y', strtotime($contact->birthday));
       }
     }
-    return view('contacts.index', ['contacts' => $contacts]);
+    return view('contacts.index', ['contacts' => collect($contacts)->sortBy('firstname')->sortBy(([
+      ['isFavorite', 'desc'],
+      ['firstname', 'asc'],
+    ]))]);
   }
   /**
   * Show the form for creating a new resource.
@@ -42,6 +46,7 @@ class ContactController extends Controller
       'email' => 'nullable|email',
       'phone' => 'nullable',
       'birthday' => 'nullable',
+      'type' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -56,6 +61,7 @@ class ContactController extends Controller
         'email' => $request->email,
         'phone' => $request->phone,
         'birthday' => $request->birthday,
+        'type' => $request->type,
       ]);
     }
 
