@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="Contacts" content="Agenda of Contacts" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="Contacts" content="Agenda of Contacts" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.0/lux/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -15,7 +15,7 @@
   <title>Contacts</title>
 </head>
 
-<body class="container-fluid bg-secondary vh-100 clearfix p-0">
+<body class="container-fluid bg-secondary vh-100 h-100 p-0">
 
   <nav class="navbar navbar-sm navbar-expand-sm navbar-dark bg-primary p-1">
     <div class="container-fluid">
@@ -41,7 +41,7 @@
       </div>
     </div>
   </nav>
-  <div class="mx-3">
+  <div class="p-1 h-100">
 
     <h1 class="mt-3">Contacts</h1>
     <p>
@@ -49,7 +49,7 @@
     </p>
     <div class="row">
 
-      <form action="/Contacts/Store" method="post" class="h-75 row col-12 col-md-6 mx-auto mx-md-0">
+      <form action="/Contacts/Store" method="post" class=" row col-12 col-md-6 mx-auto mx-md-0">
         @csrf
         <div class="form-group input-group-sm col-12 col-md-6">
           <label for="inputFirstname">Firstname:</label>
@@ -92,16 +92,17 @@
           <small id="helpBirthday" class="form-text text-muted">Contact's birthday</small>
         </div>
         <div class="form-group input-group-sm col-12">
-        <label> Contact Type: </label>
+          <label> Contact Type: </label>
 
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="type" id="inputType2" value="Personal">
-          <label class="form-check-label" for="inputType1">Personal</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="type" id="inputType1" value="Professional">
-          <label class="form-check-label" for="inputType2">Professional</label>
-        </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="type" id="inputType2" value="Personal">
+            <label class="form-check-label" for="inputType1">Personal</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="type" id="inputType1" value="Professional">
+            <label class="form-check-label" for="inputType2">Professional</label>
+          </div>
+           <small id="helpType" class="form-text is-invalid text-muted">@error('type')Type of contact need to be informed @enderror</small>
         </div>
         <div class="d-grid gap-2 col-12 mt-3">
           <button type="submit" class="btn btn-primary" type="button">Save</button>

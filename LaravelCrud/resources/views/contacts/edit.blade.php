@@ -15,7 +15,7 @@
   <title>Contacts</title>
 </head>
 
-<body class="container-fluid bg-secondary vh-100 p-0 clearfix">
+<body class="container-fluid bg-secondary vh-100 h-100 p-0">
 
   <nav class="navbar navbar-sm navbar-expand-sm navbar-dark bg-primary p-1">
     <div class="container-fluid">
@@ -41,7 +41,7 @@
       </div>
     </div>
   </nav>
-  <div class="mx-3">
+  <div class="p-1 h-100">
 
     <h1 class="mt-3">Contacts</h1>
     <p>
@@ -66,7 +66,7 @@
           <small id="helpSurname" class="form-text text-muted">Contact's surname</small>
         </div>
 
-        
+
 
         <div class="form-group input-group-sm col-12">
           <label for="inputEmail">Email:</label>
@@ -103,9 +103,7 @@
     $(document).ready(function() {
       $('#inputPhone').inputmask('(99) 99999-9999');
     });
-    $('#inputNickname').keyup(function() {
-      this.value = this.value.replace(/\s/g, '');
-    });
+    
 
   </script>
 
