@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,15 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/Contacts/Create', [ContactController::class, 'create']);
-Route::get('/Contacts', [ContactController::class, 'index']);
-Route::redirect('/', '/Contacts');
-Route::post('/Contacts/Store', [ContactController::class, 'store']);
-Route::get('/Contacts/Favorite/{id}', [ContactController::class, 'favorite']);
-Route::get('/Contacts/Edit/{id}', [ContactController::class, 'edit']);
-Route::post('/Contacts/Update/', [ContactController::class, 'update']);
-Route::get('/Contacts/Delete/{id}', [ContactController::class, 'destroy']);
+Route::get('/Contacts/Create', [ContactController::class, 'create'])->middleware('auth');;
+Route::get('/Contacts', [ContactController::class, 'index'])->middleware('auth');;
+Route::redirect('/', '/Contacts')->middleware('auth');;
+Route::post('/Contacts/Store', [ContactController::class, 'store'])->middleware('auth');;
+Route::get('/Contacts/Favorite/{id}', [ContactController::class, 'favorite'])->middleware('auth');;
+Route::get('/Contacts/Edit/{id}', [ContactController::class, 'edit'])->middleware('auth');;
+Route::post('/Contacts/Update/', [ContactController::class, 'update'])->middleware('auth');;
+Route::get('/Contacts/Delete/{id}', [ContactController::class, 'destroy'])->middleware('auth');;
+
+Route::get('/Auth/Login',[AuthController::class, 'login'])->name('login');
+Route::get('/Auth/Register',[AuthController::class, 'Register'])->name('register');
+Route::get('/Auth/Logout',[AuthController::class, 'logout'])->name('logout');
