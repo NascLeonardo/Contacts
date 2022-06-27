@@ -35,6 +35,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Contacts/Create">Create</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/Auth/Logout" class="nav-link text-danger" >Logout</a>
+                    </li>
 
 
                 </ul>

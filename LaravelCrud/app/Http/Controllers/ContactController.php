@@ -6,11 +6,13 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
+
 class ContactController extends Controller
 {
 
   public function index() {
-    $contacts = Contact::all();
+    $contacts = Contact::where('user_id',Auth::id())->get();
     foreach ($contacts as $contact) {
       if ($contact->birthday != null) {
 
@@ -62,6 +64,7 @@ class ContactController extends Controller
         'phone' => $request->phone,
         'birthday' => $request->birthday,
         'type' => $request->type,
+        'user_id' => Auth::id(),
       ]);
     }
 

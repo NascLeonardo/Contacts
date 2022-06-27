@@ -3,4 +3,4 @@ image:
 
 tasks:
     
-     - command: cd crud && php artisan serve --host=0.0.0.0
+     - command: cd LaravelCrud && php artisan serve --host=0.0.0.0

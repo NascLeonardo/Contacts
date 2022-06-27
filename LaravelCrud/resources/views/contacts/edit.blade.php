@@ -28,14 +28,14 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/Contacts">Contacts
-              <span class="visually-hidden">(current)</span>
-            </a>
+            <a class="nav-link" href="/Contacts">Contacts</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="/Contacts/Create">Create</a>
           </li>
-
+          <li class="nav-item">
+            <a href="/Auth/Logout" class="nav-link text-danger" >Logout</a>
+          </li>
         </ul>
 
       </div>

@@ -16,7 +16,8 @@ class Contact extends Model
     'phone',
     'birthday',
     'isFavorite',
-    'type'];
+    'type',
+    'user_id'];
 
 
 }
