@@ -12,7 +12,7 @@ class ContactController extends Controller
 {
 
   public function index() {
-    $contacts = Contact::where('user_id',Auth::id())->get();
+    $contacts = Contact::where('user_id', Auth::id())->get();
     foreach ($contacts as $contact) {
       if ($contact->birthday != null) {
 
@@ -28,6 +28,7 @@ class ContactController extends Controller
   * Show the form for creating a new resource.
   *
   * @return \Illuminate\Http\Response
+  * @return \Illuminate\Http\Response
   */
   public function create() {
     return view('contacts.create');
@@ -40,7 +41,6 @@ class ContactController extends Controller
   * @return \Illuminate\Http\Response
   */
   public function store(Request $request) {
-    echo $request;
     $validator = Validator::make($request->all(), [
       'nickname' => 'required|unique:contacts',
       'firstname' => 'required',
@@ -81,8 +81,10 @@ class ContactController extends Controller
   * @return \Illuminate\Http\Response
   */
   public function favorite(int $id) {
-    $contact = Contact::findOrFail($id);
-
+    $contact = Contact::findOr($id, fn() => redirect ('/'));
+    if (Auth::id() != $contact->user_id) {
+      return redirect('/');
+    }
     $contact->update([
       'isFavorite' => !$contact->isFavorite,
     ]);
@@ -91,8 +93,11 @@ class ContactController extends Controller
   }
 
   public function edit(int $id) {
-    $contact = Contact::findOrFail($id);
+    $contact = Contact::findOr($id, fn () => redirect()->action([ContactController::class, 'index']));
 
+    if (Auth::id() != $contact->user_id) {
+      return redirect('/');
+    }
     if ($contact->birthday != null) {
 
       $contact->birthday = date('Y-m-d', strtotime($contact->birthday));
@@ -111,7 +116,10 @@ class ContactController extends Controller
       'birthday' => 'nullable',
     ]);
 
-    $contact = Contact::findOrFail($request->id);
+    $contact = Contact::findOr($request->id, fn() => redirect ('/'));
+    if (Auth::id() != $contact->user_id) {
+      return redirect('/');
+    }
     if ($validator->fails()) {
       return redirect("/Contacts/Edit/".$request->id)
       ->withErrors($validator)
@@ -130,7 +138,10 @@ class ContactController extends Controller
   }
 
   public function destroy(int $id) {
-    $contact = Contact::findOrFail($id);
+    $contact = Contact::findOr($id, fn() => redirect ('/'));
+    if (Auth::id() != $contact->user_id) {
+      return redirect('/');
+    }
     $contact->delete();
     return redirect()->action([ContactController::class, 'index']);
   }

@@ -24,6 +24,6 @@ Route::get('/Contacts/Edit/{id}', [ContactController::class, 'edit'])->middlewar
 Route::post('/Contacts/Update/', [ContactController::class, 'update'])->middleware('auth');;
 Route::get('/Contacts/Delete/{id}', [ContactController::class, 'destroy'])->middleware('auth');;
 
-Route::get('/Auth/Login',[AuthController::class, 'login'])->name('login');
-Route::get('/Auth/Register',[AuthController::class, 'Register'])->name('register');
-Route::get('/Auth/Logout',[AuthController::class, 'logout'])->name('logout');
+Route::get('/Auth/Login', [AuthController::class, 'login']);
+Route::get('/Auth/Register', [AuthController::class, 'Register']);
+Route::get('/Auth/Logout',[AuthController::class, 'logout']);
