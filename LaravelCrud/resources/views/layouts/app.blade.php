@@ -47,7 +47,7 @@
     </div>
   </nav>
 
-  <div class="mx-3">
+  <div class="container-fluid">
 
     <h1 class="mt-1">Contacts</h1>
 

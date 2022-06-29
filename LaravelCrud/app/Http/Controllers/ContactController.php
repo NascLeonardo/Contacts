@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ContactController extends Controller
 {
@@ -21,6 +22,27 @@ class ContactController extends Controller
             }
         }
         return view('contacts.index', ['contacts' => collect($contacts)->sortBy('firstname')->sortBy(([
+            ['isFavorite', 'desc'],
+            ['firstname', 'asc'],
+        ]))]);
+    }
+
+    public function search(String $search)
+    {
+        $contacts = Contact::where('user_id', Auth::id())->get();
+        $searched = collect([]);
+
+
+
+
+        var_dump($searched);
+        foreach ($searched as $contact) {
+            if ($contact->birthday != null) {
+
+                $contact->birthday = date('d/m/Y', strtotime($contact->birthday));
+            }
+        }
+        return view('contacts.index', ['contacts' => collect($searched)->sortBy('firstname')->sortBy(([
             ['isFavorite', 'desc'],
             ['firstname', 'asc'],
         ]))]);
