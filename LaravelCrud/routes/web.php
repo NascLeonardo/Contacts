@@ -23,9 +23,9 @@ Route::get('/Contacts/Favorite/{id}', [ContactController::class, 'favorite'])->m
 Route::get('/Contacts/Edit/{id}', [ContactController::class, 'edit'])->middleware('auth');;
 Route::post('/Contacts/Update/', [ContactController::class, 'update'])->middleware('auth');;
 Route::get('/Contacts/Delete/{id}', [ContactController::class, 'destroy'])->middleware('auth');;
-Route::get('/Contacts/{search}', [ContactController::class, 'search'])->middleware('auth');;
+Route::get('/Contacts/Search', [ContactController::class, 'search'])->middleware('auth');;
 
 
 Route::get('/Auth/Login', [AuthController::class, 'login']);
 Route::get('/Auth/Register', [AuthController::class, 'Register']);
-Route::get('/Auth/Logout',[AuthController::class, 'logout']);
+Route::get('/Auth/Logout', [AuthController::class, 'logout']);
