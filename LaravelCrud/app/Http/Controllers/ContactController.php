@@ -30,12 +30,8 @@ class ContactController extends Controller
     $contacts = Contact::where('user_id', Auth::id())->get();
     $searched = collect([]);
 
-
-
-
     foreach ($contacts as $contact) {
-      if (Str::contains($contact->firstname, $request->search) ||
-        Str::contains($contact->lastname, $request->search) || Str::contains($contact->email, $request->search) || Str::contains($contact->nickname, $request->search)) {
+      if (Str::contains($contact->phone, $request->search) ||Str::contains($contact->firstname, $request->search) || Str::contains($contact->lastname, $request->search) || Str::contains($contact->email, $request->search) || Str::contains($contact->nickname, $request->search)) {
 
         if ($contact->birthday != null) {
 
