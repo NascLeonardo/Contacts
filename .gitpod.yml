@@ -2,6 +2,6 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: touch /workspace/Contacts/database/crud.sqlite && composer install && cp .env.example .env && php artisan migrate
+  - init: touch /workspace/Contacts/database/crud.sqlite && composer install && cp .env.example .env && php artisan migrate && php artisan key:generate
     command: php artisan serve --host=0.0.0.0
 
