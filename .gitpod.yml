@@ -3,4 +3,4 @@ image:
 
 tasks:
     
-     - command: cd LaravelCrud && php artisan serve --host=0.0.0.0
+     - command: cd LaravelCrud && composer install && cp .env.example .env && php artisan migrate && php artisan serve --host=0.0.0.0
