@@ -2,5 +2,6 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-    
-     - command: cd LaravelCrud && composer install && cp .env.example .env && php artisan migrate && php artisan serve --host=0.0.0.0
+  - init: cd LaravelCrud && composer install && cp .env.example .env && php artisan migrate && php artisan serve --host=0.0.0.0 # runs during prebuild
+    command: cd LaravelCrud && php artisan serve --host=0.0.0.0
+
